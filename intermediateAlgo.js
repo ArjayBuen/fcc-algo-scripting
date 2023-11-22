@@ -36,3 +36,29 @@ function sumAll(arr) {
   //should return ["snuffleupagus", "cookie monster", "elmo"]
   [1, "calf", 3, "piglet"], [7, "filly"] 
   //should return [1, "calf", 3, "piglet", 7, "filly"]
+
+
+  function destroyer(arr) {
+    const valsToRemove = Object.values(arguments).slice(1);
+    const filteredArray = [];
+  
+    for (let i = 0; i < arr.length; i++) {
+      let removeElement = false;
+      for (let j = 0; j < valsToRemove.length; j++) {
+        if (arr[i] === valsToRemove[j]) {
+          removeElement = true;
+        }
+      }
+      if (!removeElement) {
+        filteredArray.push(arr[i]);
+      }
+    }
+    return filteredArray;
+  }
+  
+  destroyer([1, 2, 3, 1, 2, 3], 2, 3); //should return [1, 1]
+  destroyer([2, 3, 2, 3], 2, 3); //should return []
+  destroyer(["possum", "trollo", 12, "safari", "hotdog", 92, 65, "grandma", "bugati", "trojan", "yacht"], 
+  "yacht", "possum", "trollo", "safari", "hotdog", "grandma", "bugati", "trojan");
+   //should return [12,92,65]
+  
